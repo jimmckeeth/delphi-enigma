@@ -1,0 +1,8 @@
+
+*.dcu
+*.local
+*.exe
+*.dcu
+*.dcu
+__history/
+__recovery/

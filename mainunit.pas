@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ComCtrls, Menus, StdCtrls, ToolWin, ExtCtrls, Buttons, ImgList, enigmaunit,shellapi;
+  ComCtrls, Menus, StdCtrls, ToolWin, ExtCtrls, Buttons, ImgList, enigmaunit,shellapi,
+  System.ImageList;
 
 type
   TMainForm = class(TForm)
@@ -29,15 +30,6 @@ type
     GammaRadioButton: TRadioButton;
     N2: TMenuItem;
     Einstellung1: TMenuItem;
-    ToolBar1: TToolBar;
-    EnigmaToolButton: TToolButton;
-    PreferencesToolButton: TToolButton;
-    InfoToolButton: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    HelpToolButton: TToolButton;
-    ExitToolButton: TToolButton;
-    ToolButton2: TToolButton;
     EnigmaMaschine1: TMenuItem;
     N3: TMenuItem;
     Rotor3Edit: TEdit;
@@ -118,7 +110,6 @@ type
     Rotor3ComboBox: TComboBox;
     Rotor2ComboBox: TComboBox;
     Debug1: TMenuItem;
-    DebugButton: TToolButton;
     Rotor1RingSettingEdit: TEdit;
     Rotor1RingUpDown: TUpDown;
     Rotor2RingSettingEdit: TEdit;
@@ -143,9 +134,9 @@ type
     procedure ThreeRotorsRadioButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Rotor2UpDownChangingEx(Sender: TObject; var AllowChange: Boolean;
-      NewValue: Smallint; Direction: TUpDownDirection);
+      NewValue: Integer; Direction: TUpDownDirection);
     procedure Rotor3UpDownChangingEx(Sender: TObject; var AllowChange: Boolean;
-      NewValue: Smallint; Direction: TUpDownDirection);
+      NewValue: Integer; Direction: TUpDownDirection);
     procedure UseButtonClick(Sender: TObject);
     procedure KeyBoardClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -155,20 +146,17 @@ type
     procedure ButtonMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure ButtonMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure Rotor4UpDownChangingEx(Sender: TObject; var AllowChange: Boolean;
-      NewValue: Smallint; Direction: TUpDownDirection);
-    procedure Hilfe2Click(Sender: TObject);
-    procedure PlugBoardLabelClick(Sender: TObject);
-    procedure Rotor1UpDownChangingEx(Sender: TObject;
-      var AllowChange: Boolean; NewValue: Smallint;
-      Direction: TUpDownDirection);
+			Shift: TShiftState; X, Y: Integer);
+		procedure Hilfe2Click(Sender: TObject);
+		procedure PlugBoardLabelClick(Sender: TObject);
+		procedure Rotor1UpDownChangingEx(Sender: TObject; var AllowChange: Boolean;
+			NewValue: Integer; Direction: TUpDownDirection);
+		procedure Rotor4UpDownChangingEx(Sender: TObject;
+			var AllowChange: Boolean; NewValue: Integer; Direction: TUpDownDirection);
   private
      EnigmaMachine: TEnigmaMachine;
-     LightLetter: Char;
-    { Private-Deklarationen }
-  public
-    { Public-Deklarationen }
+		 LightLetter: Char;
+	public
   end;
 
 var
@@ -189,7 +177,6 @@ procedure TMainForm.Info1Click(Sender: TObject);
 begin
   AboutForm.ShowModal;
 end;
-
 
 procedure TMainForm.ShowDarkImage(Button: TSpeedButton;ImageIndex: Integer);
 var
@@ -334,7 +321,7 @@ end;
 
 
 procedure TMainForm.Rotor2UpDownChangingEx(Sender: TObject;
-  var AllowChange: Boolean; NewValue: Smallint;
+	var AllowChange: Boolean; NewValue: Integer;
   Direction: TUpDownDirection);
 begin
   case Direction of
@@ -351,7 +338,7 @@ begin
 end;
 
 procedure TMainForm.Rotor3UpDownChangingEx(Sender: TObject;
-  var AllowChange: Boolean; NewValue: Smallint;
+  var AllowChange: Boolean; NewValue: Integer;
   Direction: TUpDownDirection);
 begin
   case Direction of
@@ -454,7 +441,7 @@ begin
 end;
 
 procedure TMainForm.ButtonMouseDown(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+	Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   KeyBoardClick(Sender);
   LightButton(LightLetter);
@@ -467,19 +454,18 @@ begin
 end;
 
 procedure TMainForm.Rotor4UpDownChangingEx(Sender: TObject;
-  var AllowChange: Boolean; NewValue: Smallint;
+  var AllowChange: Boolean; NewValue: Integer;
   Direction: TUpDownDirection);
 begin
   case Direction of
-  updUP:  begin
-            if Rotor4Edit.Text[1]='Z' then Rotor4Edit.Text:='A' else
-            Rotor4Edit.Text:=chr (ord(Rotor4Edit.Text[1])+1);
-          end;
+	updUP:
+			if Rotor4Edit.Text[1]='Z' then Rotor4Edit.Text:='A' else
+			Rotor4Edit.Text:=chr (ord(Rotor4Edit.Text[1])+1);
 
   updDOWN:
           if Rotor4Edit.Text[1]='A' then Rotor4Edit.Text:='Z' else
           Rotor4Edit.Text:=chr (ord(Rotor4Edit.Text[1])-1)
-   end;
+	 end;
 end;
 
 procedure TMainForm.Hilfe2Click(Sender: TObject);
@@ -488,7 +474,7 @@ begin
 end;
 
 procedure TMainForm.Rotor1UpDownChangingEx(Sender: TObject;
-  var AllowChange: Boolean; NewValue: Smallint;
+  var AllowChange: Boolean; NewValue: Integer;
   Direction: TUpDownDirection);
 begin
   case Direction of
