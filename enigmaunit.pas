@@ -2,6 +2,8 @@ unit enigmaunit;
 
 interface
 
+{$M+}
+
 uses dialogs,sysutils;
 
 type
@@ -51,21 +53,21 @@ type
 
 
    TEnigmaMachine = class (TObject)
-
-      FPlugBoardSettings: String;
-      FRotorPositions: String;
-      FDebugOutput: String;
-      FRotorCount: TRotorCount;
-      FRotor1: TEnigmaRotor;
-      FRotor2: TEnigmaRotor;
-      FRotor3: TEnigmaRotor;
-      FRotor4: TEnigmaRotor;
-      FReflector: TEnigmaReflector;
    private
-     procedure SetRotorCount(RotorCount: TRotorCount);
-     procedure MoveRotors;
-     procedure WriteDebug(DebugLine: String);
-     function ProcessPlugBoard(Letter: Char): Char;
+
+		FPlugBoardSettings: String;
+		FRotorPositions: String;
+		FDebugOutput: String;
+		FRotorCount: TRotorCount;
+		FRotor1: TEnigmaRotor;
+		FRotor2: TEnigmaRotor;
+		FRotor3: TEnigmaRotor;
+		FRotor4: TEnigmaRotor;
+		FReflector: TEnigmaReflector;
+		procedure SetRotorCount(RotorCount: TRotorCount);
+		procedure MoveRotors;
+		procedure WriteDebug(DebugLine: String);
+		function ProcessPlugBoard(Letter: Char): Char;
    public
      constructor Create;
      destructor Destroy; override;

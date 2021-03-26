@@ -2,10 +2,12 @@ object MainForm: TMainForm
   Left = 115
   Top = 98
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Enigma'
-  ClientHeight = 445
-  ClientWidth = 634
+  Caption = 'Enigma Machine Simulator'
+  ClientHeight = 421
+  ClientWidth = 554
   Color = clBtnFace
+  Constraints.MinHeight = 480
+  Constraints.MinWidth = 570
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -45,46 +47,68 @@ object MainForm: TMainForm
   object EnigmaPageControl: TPageControl
     Left = 0
     Top = 0
-    Width = 634
-    Height = 445
+    Width = 554
+    Height = 421
     ActivePage = EnigmaMainSheet
     Align = alClient
     TabOrder = 0
+    OnChange = EnigmaPageControlChange
     object EnigmaMainSheet: TTabSheet
-      Caption = '&Enigma-Machine'
+      Caption = '&Machine'
+      ExplicitLeft = 0
+      ExplicitTop = 28
       object Label1: TLabel
-        Left = 495
+        Left = 409
         Top = 85
         Width = 32
         Height = 13
         Caption = 'Output'
       end
       object Label2: TLabel
-        Left = 495
+        Left = 409
         Top = 229
         Width = 24
         Height = 13
         Caption = 'Input'
       end
       object Label6: TLabel
-        Left = 240
-        Top = 24
-        Width = 383
-        Height = 49
-        Alignment = taCenter
-        Caption = 'ENIGMA-Simulator'
-        Color = clBtnText
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clActiveBorder
-        Font.Height = -43
-        Font.Name = 'Arial'
-        Font.Style = [fsBold, fsItalic, fsUnderline]
-        ParentColor = False
-        ParentFont = False
+        Left = 230
+        Top = 22
+        Width = 26
+        Height = 13
+        Caption = 'Rotor'
+      end
+      object Label7: TLabel
+        Left = 230
+        Top = 46
+        Width = 22
+        Height = 13
+        Caption = 'Ring'
+      end
+      object Label8: TLabel
+        Left = 192
+        Top = 4
+        Width = 6
+        Height = 13
+        Caption = '3'
+      end
+      object Label9: TLabel
+        Left = 136
+        Top = 4
+        Width = 6
+        Height = 13
+        Caption = '2'
+      end
+      object Label10: TLabel
+        Left = 80
+        Top = 4
+        Width = 6
+        Height = 13
+        Caption = '1'
       end
       object Rotor3Edit: TEdit
-        Left = 184
-        Top = 24
+        Left = 183
+        Top = 19
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -94,8 +118,8 @@ object MainForm: TMainForm
         Text = 'A'
       end
       object Rotor2UpDown: TUpDown
-        Left = 153
-        Top = 24
+        Left = 152
+        Top = 19
         Width = 17
         Height = 21
         Max = 32767
@@ -104,8 +128,8 @@ object MainForm: TMainForm
         OnChangingEx = Rotor2UpDownChangingEx
       end
       object Rotor3UpDown: TUpDown
-        Left = 209
-        Top = 24
+        Left = 208
+        Top = 19
         Width = 17
         Height = 21
         ArrowKeys = False
@@ -115,8 +139,8 @@ object MainForm: TMainForm
         OnChangingEx = Rotor3UpDownChangingEx
       end
       object Rotor2Edit: TEdit
-        Left = 128
-        Top = 24
+        Left = 127
+        Top = 19
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -128,14 +152,14 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 16
         Top = 232
-        Width = 473
+        Width = 385
         Height = 145
         BevelInner = bvRaised
         BevelOuter = bvLowered
-        Color = clWindowText
+        ParentBackground = False
         TabOrder = 4
         object QKeyButton: TSpeedButton
-          Left = 59
+          Left = 16
           Top = 16
           Width = 30
           Height = 30
@@ -202,7 +226,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object WKeyButton: TSpeedButton
-          Left = 99
+          Left = 56
           Top = 16
           Width = 30
           Height = 30
@@ -269,7 +293,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object EKeyButton: TSpeedButton
-          Left = 139
+          Left = 96
           Top = 16
           Width = 30
           Height = 30
@@ -336,7 +360,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object RKeyButton: TSpeedButton
-          Left = 179
+          Left = 136
           Top = 16
           Width = 30
           Height = 30
@@ -403,7 +427,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object TKeyButton: TSpeedButton
-          Left = 219
+          Left = 176
           Top = 16
           Width = 30
           Height = 30
@@ -470,7 +494,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object ZKeyButton: TSpeedButton
-          Left = 259
+          Left = 216
           Top = 16
           Width = 30
           Height = 30
@@ -537,7 +561,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object UKeyButton: TSpeedButton
-          Left = 299
+          Left = 256
           Top = 16
           Width = 30
           Height = 30
@@ -604,7 +628,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object IKeyButton: TSpeedButton
-          Left = 339
+          Left = 296
           Top = 16
           Width = 30
           Height = 30
@@ -671,7 +695,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object OKeyButton: TSpeedButton
-          Left = 379
+          Left = 336
           Top = 16
           Width = 30
           Height = 30
@@ -738,7 +762,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object AKeyButton: TSpeedButton
-          Left = 84
+          Left = 41
           Top = 56
           Width = 30
           Height = 30
@@ -805,7 +829,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object DKeyButton: TSpeedButton
-          Left = 164
+          Left = 121
           Top = 56
           Width = 30
           Height = 30
@@ -872,7 +896,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object FKeyButton: TSpeedButton
-          Left = 204
+          Left = 161
           Top = 56
           Width = 30
           Height = 30
@@ -939,7 +963,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object GKeyButton: TSpeedButton
-          Left = 244
+          Left = 201
           Top = 56
           Width = 30
           Height = 30
@@ -1006,7 +1030,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object HKeyButton: TSpeedButton
-          Left = 284
+          Left = 241
           Top = 56
           Width = 30
           Height = 30
@@ -1073,7 +1097,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object JKeyButton: TSpeedButton
-          Left = 324
+          Left = 281
           Top = 56
           Width = 30
           Height = 30
@@ -1140,7 +1164,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object KKeyButton: TSpeedButton
-          Left = 364
+          Left = 321
           Top = 56
           Width = 30
           Height = 30
@@ -1207,7 +1231,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object PKeyButton: TSpeedButton
-          Left = 64
+          Left = 21
           Top = 96
           Width = 30
           Height = 30
@@ -1274,7 +1298,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object YKeyButton: TSpeedButton
-          Left = 104
+          Left = 61
           Top = 96
           Width = 30
           Height = 30
@@ -1341,7 +1365,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object XKeyButton: TSpeedButton
-          Left = 144
+          Left = 101
           Top = 96
           Width = 30
           Height = 30
@@ -1408,7 +1432,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object CKeyButton: TSpeedButton
-          Left = 184
+          Left = 141
           Top = 96
           Width = 30
           Height = 30
@@ -1475,7 +1499,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object VKeyButton: TSpeedButton
-          Left = 224
+          Left = 181
           Top = 96
           Width = 30
           Height = 30
@@ -1542,7 +1566,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object BKeyButton: TSpeedButton
-          Left = 264
+          Left = 221
           Top = 96
           Width = 30
           Height = 30
@@ -1609,7 +1633,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object NKeyButton: TSpeedButton
-          Left = 304
+          Left = 261
           Top = 96
           Width = 30
           Height = 30
@@ -1676,7 +1700,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object MKeyButton: TSpeedButton
-          Left = 344
+          Left = 301
           Top = 96
           Width = 30
           Height = 30
@@ -1743,7 +1767,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object LKeyButton: TSpeedButton
-          Left = 384
+          Left = 341
           Top = 96
           Width = 30
           Height = 30
@@ -1810,7 +1834,7 @@ object MainForm: TMainForm
           OnMouseUp = ButtonMouseUp
         end
         object SKeyButton: TSpeedButton
-          Left = 124
+          Left = 81
           Top = 56
           Width = 30
           Height = 30
@@ -1880,21 +1904,18 @@ object MainForm: TMainForm
       object Panel2: TPanel
         Left = 16
         Top = 88
-        Width = 473
+        Width = 385
         Height = 129
         BevelInner = bvRaised
         BevelOuter = bvLowered
-        Color = clBlack
+        ParentBackground = False
         TabOrder = 5
-        DesignSize = (
-          473
-          129)
         object QLight: TSpeedButton
-          Left = 59
-          Top = 8
+          Left = 11
+          Top = 9
           Width = 30
           Height = 30
-          Anchors = [akLeft, akTop, akRight, akBottom]
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -1953,13 +1974,13 @@ object MainForm: TMainForm
             0000F7F7F7F7F7F7F700000000000000000000F7F7F7F7F7F7F7F7000000F7F7
             F7F7F7F7F7F7F7F700000000F7F7F7F7F7F7F7F7F7F7F7000000F7F7F7F7F7F7
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
-          Transparent = False
         end
         object WLight: TSpeedButton
-          Left = 99
-          Top = 8
+          Left = 51
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2020,10 +2041,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object ELight: TSpeedButton
-          Left = 139
-          Top = 8
+          Left = 91
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2084,10 +2106,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object RLight: TSpeedButton
-          Left = 179
-          Top = 8
+          Left = 131
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2148,10 +2171,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object TLight: TSpeedButton
-          Left = 219
-          Top = 8
+          Left = 171
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2212,10 +2236,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object ZLight: TSpeedButton
-          Left = 259
-          Top = 8
+          Left = 211
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2276,10 +2301,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object ULight: TSpeedButton
-          Left = 299
-          Top = 8
+          Left = 251
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2340,10 +2366,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object ILight: TSpeedButton
-          Left = 339
-          Top = 8
+          Left = 291
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2404,10 +2431,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object OLight: TSpeedButton
-          Left = 379
-          Top = 8
+          Left = 331
+          Top = 9
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2468,10 +2496,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object ALight: TSpeedButton
-          Left = 84
-          Top = 48
+          Left = 36
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2532,10 +2561,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object SLight: TSpeedButton
-          Left = 124
-          Top = 48
+          Left = 76
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2596,10 +2626,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object DLight: TSpeedButton
-          Left = 164
-          Top = 48
+          Left = 116
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2660,10 +2691,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object FLight: TSpeedButton
-          Left = 204
-          Top = 48
+          Left = 156
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2724,10 +2756,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object GLight: TSpeedButton
-          Left = 244
-          Top = 48
+          Left = 196
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2788,10 +2821,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object HLight: TSpeedButton
-          Left = 284
-          Top = 48
+          Left = 236
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2852,10 +2886,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object JLight: TSpeedButton
-          Left = 324
-          Top = 48
+          Left = 276
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2916,10 +2951,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object KLight: TSpeedButton
-          Left = 364
-          Top = 48
+          Left = 316
+          Top = 49
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -2980,10 +3016,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object PLight: TSpeedButton
-          Left = 64
-          Top = 88
+          Left = 16
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3044,10 +3081,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object YLight: TSpeedButton
-          Left = 104
-          Top = 88
+          Left = 56
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3108,10 +3146,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object XLight: TSpeedButton
-          Left = 144
-          Top = 88
+          Left = 96
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3172,10 +3211,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object CLight: TSpeedButton
-          Left = 184
-          Top = 88
+          Left = 136
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3236,10 +3276,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object VLight: TSpeedButton
-          Left = 224
-          Top = 88
+          Left = 176
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3300,10 +3341,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object BLight: TSpeedButton
-          Left = 264
-          Top = 88
+          Left = 216
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3364,10 +3406,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object NLight: TSpeedButton
-          Left = 304
-          Top = 88
+          Left = 256
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3428,10 +3471,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object MLight: TSpeedButton
-          Left = 344
-          Top = 88
+          Left = 296
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3492,10 +3536,11 @@ object MainForm: TMainForm
             F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7F7000000}
         end
         object LLight: TSpeedButton
-          Left = 384
-          Top = 88
+          Left = 336
+          Top = 89
           Width = 30
           Height = 30
+          Enabled = False
           Flat = True
           Glyph.Data = {
             F2060000424DF206000000000000360400002800000019000000190000000100
@@ -3557,8 +3602,8 @@ object MainForm: TMainForm
         end
       end
       object Rotor1Edit: TEdit
-        Left = 72
-        Top = 24
+        Left = 71
+        Top = 19
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -3568,8 +3613,8 @@ object MainForm: TMainForm
         Text = 'A'
       end
       object Rotor1UpDown: TUpDown
-        Left = 97
-        Top = 24
+        Left = 96
+        Top = 19
         Width = 16
         Height = 21
         Max = 32767
@@ -3578,8 +3623,8 @@ object MainForm: TMainForm
         OnChangingEx = Rotor1UpDownChangingEx
       end
       object Rotor1RingSettingEdit: TEdit
-        Left = 72
-        Top = 48
+        Left = 71
+        Top = 43
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -3588,8 +3633,8 @@ object MainForm: TMainForm
         Text = '1'
       end
       object Rotor1RingUpDown: TUpDown
-        Left = 97
-        Top = 48
+        Left = 96
+        Top = 43
         Width = 16
         Height = 21
         Associate = Rotor1RingSettingEdit
@@ -3600,8 +3645,8 @@ object MainForm: TMainForm
         OnChangingEx = Rotor1UpDownChangingEx
       end
       object Rotor2RingSettingEdit: TEdit
-        Left = 128
-        Top = 48
+        Left = 127
+        Top = 43
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -3610,8 +3655,8 @@ object MainForm: TMainForm
         Text = '1'
       end
       object Rotor2RingUpDown: TUpDown
-        Left = 153
-        Top = 48
+        Left = 152
+        Top = 43
         Width = 16
         Height = 21
         Associate = Rotor2RingSettingEdit
@@ -3621,8 +3666,8 @@ object MainForm: TMainForm
         TabOrder = 11
       end
       object Rotor3RingSettingEdit: TEdit
-        Left = 184
-        Top = 48
+        Left = 183
+        Top = 43
         Width = 25
         Height = 21
         Alignment = taCenter
@@ -3631,8 +3676,8 @@ object MainForm: TMainForm
         Text = '1'
       end
       object Rotor3RingUpDown: TUpDown
-        Left = 209
-        Top = 48
+        Left = 208
+        Top = 43
         Width = 16
         Height = 21
         Associate = Rotor3RingSettingEdit
@@ -3641,53 +3686,8 @@ object MainForm: TMainForm
         Position = 1
         TabOrder = 13
       end
-      object Rotor4Edit: TEdit
-        Left = 16
-        Top = 24
-        Width = 25
-        Height = 21
-        Alignment = taCenter
-        ReadOnly = True
-        TabOrder = 14
-        Text = 'A'
-        Visible = False
-      end
-      object Rotor4RingSettingEdit: TEdit
-        Left = 16
-        Top = 48
-        Width = 25
-        Height = 21
-        Alignment = taCenter
-        ReadOnly = True
-        TabOrder = 15
-        Text = '1'
-        Visible = False
-      end
-      object Rotor4RingUpDown: TUpDown
-        Left = 41
-        Top = 48
-        Width = 16
-        Height = 21
-        Associate = Rotor4RingSettingEdit
-        Min = 1
-        Max = 26
-        Position = 1
-        TabOrder = 16
-        Visible = False
-      end
-      object Rotor4UpDown: TUpDown
-        Left = 41
-        Top = 24
-        Width = 17
-        Height = 21
-        Max = 32767
-        Position = 16000
-        TabOrder = 17
-        Visible = False
-        OnChangingEx = Rotor4UpDownChangingEx
-      end
       object InputEdit: TRichEdit
-        Left = 496
+        Left = 409
         Top = 248
         Width = 129
         Height = 129
@@ -3697,11 +3697,11 @@ object MainForm: TMainForm
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
-        TabOrder = 18
+        TabOrder = 14
         Zoom = 100
       end
       object OutputEdit: TRichEdit
-        Left = 496
+        Left = 409
         Top = 104
         Width = 129
         Height = 112
@@ -3711,213 +3711,281 @@ object MainForm: TMainForm
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
-        TabOrder = 19
+        TabOrder = 15
         Zoom = 100
+      end
+      object panelReel4: TPanel
+        Left = 17
+        Top = 3
+        Width = 45
+        Height = 68
+        BevelOuter = bvNone
+        Caption = ' '
+        TabOrder = 16
+        object Label11: TLabel
+          Left = 10
+          Top = 2
+          Width = 6
+          Height = 13
+          Caption = '4'
+        end
+        object Rotor4Edit: TEdit
+          Left = 0
+          Top = 17
+          Width = 25
+          Height = 21
+          Alignment = taCenter
+          ReadOnly = True
+          TabOrder = 0
+          Text = 'A'
+        end
+        object Rotor4RingSettingEdit: TEdit
+          Left = 0
+          Top = 41
+          Width = 25
+          Height = 21
+          Alignment = taCenter
+          ReadOnly = True
+          TabOrder = 1
+          Text = '1'
+        end
+        object Rotor4RingUpDown: TUpDown
+          Left = 25
+          Top = 41
+          Width = 16
+          Height = 21
+          Associate = Rotor4RingSettingEdit
+          Min = 1
+          Max = 26
+          Position = 1
+          TabOrder = 2
+        end
+        object Rotor4UpDown: TUpDown
+          Left = 25
+          Top = 17
+          Width = 17
+          Height = 21
+          Max = 32767
+          Position = 16000
+          TabOrder = 3
+          OnChangingEx = Rotor4UpDownChangingEx
+        end
       end
     end
     object EnigmaConfigSheet: TTabSheet
       Caption = '&Settings'
       ImageIndex = 1
-      object GroupBox1: TGroupBox
-        Left = 92
-        Top = 16
-        Width = 113
-        Height = 89
-        Caption = '&Anzahl der Walzen'
+      DesignSize = (
+        546
+        393)
+      object Panel3: TPanel
+        Left = 104
+        Top = 47
+        Width = 316
+        Height = 306
+        Anchors = []
+        BevelOuter = bvLowered
+        Caption = ' '
         TabOrder = 0
-        object ThreeRotorsRadioButton: TRadioButton
-          Left = 8
-          Top = 24
-          Width = 33
-          Height = 17
-          Caption = '3'
-          Checked = True
+        object GroupBox1: TGroupBox
+          Left = 12
+          Top = 8
+          Width = 81
+          Height = 73
+          Caption = '&Reel Count'
           TabOrder = 0
-          TabStop = True
-          OnClick = ThreeRotorsRadioButtonClick
+          object ThreeRotorsRadioButton: TRadioButton
+            Left = 8
+            Top = 24
+            Width = 49
+            Height = 17
+            Caption = '3'
+            Checked = True
+            TabOrder = 0
+            TabStop = True
+            OnClick = ThreeRotorsRadioButtonClick
+          end
+          object FourRotorsRadioButton: TRadioButton
+            Left = 8
+            Top = 47
+            Width = 44
+            Height = 17
+            Caption = '4'
+            TabOrder = 1
+            OnClick = FourRotorsRadioButtonClick
+          end
         end
-        object FourRotorsRadioButton: TRadioButton
-          Left = 8
-          Top = 56
-          Width = 41
-          Height = 17
-          Caption = '4'
+        object GroupBox2: TGroupBox
+          Left = 99
+          Top = 8
+          Width = 77
+          Height = 73
+          Caption = '&Reflectors'
           TabOrder = 1
-          OnClick = FourRotorsRadioButtonClick
+          object ReflectorBRadioButton: TRadioButton
+            Left = 11
+            Top = 24
+            Width = 41
+            Height = 17
+            Caption = 'B'
+            Checked = True
+            TabOrder = 0
+            TabStop = True
+          end
+          object ReflectorCRadioButton: TRadioButton
+            Left = 11
+            Top = 47
+            Width = 41
+            Height = 17
+            Caption = 'C'
+            TabOrder = 1
+          end
         end
-      end
-      object GroupBox2: TGroupBox
-        Left = 220
-        Top = 16
-        Width = 113
-        Height = 89
-        Caption = '&Reflektor'
-        TabOrder = 1
-        object ReflectorBRadioButton: TRadioButton
-          Left = 8
-          Top = 24
-          Width = 41
-          Height = 17
-          Caption = 'B'
-          Checked = True
-          TabOrder = 0
-          TabStop = True
-        end
-        object ReflectorCRadioButton: TRadioButton
-          Left = 8
-          Top = 56
-          Width = 41
-          Height = 17
-          Caption = 'C'
-          TabOrder = 1
-        end
-      end
-      object GroupBox4: TGroupBox
-        Left = 92
-        Top = 120
-        Width = 241
-        Height = 89
-        Caption = '&Griechenwalzen (f'#252'r 4. Walze)'
-        TabOrder = 2
-        object BetaRadioButton: TRadioButton
-          Left = 16
-          Top = 24
-          Width = 65
-          Height = 17
-          Caption = '&Beta'
-          Checked = True
-          Enabled = False
-          TabOrder = 0
-          TabStop = True
-        end
-        object GammaRadioButton: TRadioButton
-          Left = 16
-          Top = 48
-          Width = 57
-          Height = 17
-          Caption = '&Gamma'
-          Enabled = False
-          TabOrder = 1
-        end
-      end
-      object GroupBox3: TGroupBox
-        Left = 92
-        Top = 224
-        Width = 449
-        Height = 113
-        Caption = '&Steckerbrett'
-        TabOrder = 3
-        object PlugBoardMemo: TMemo
-          Left = 2
-          Top = 15
-          Width = 445
-          Height = 96
-          Align = alClient
-          Lines.Strings = (
-            'EN'
-            'IG'
-            'MA')
-          TabOrder = 0
-        end
-      end
-      object UseButton: TButton
-        Left = 279
-        Top = 360
-        Width = 75
-        Height = 25
-        Caption = '&'#220'bernehmen'
-        TabOrder = 4
-        OnClick = UseButtonClick
-      end
-      object GroupBox5: TGroupBox
-        Left = 356
-        Top = 16
-        Width = 185
-        Height = 201
-        Caption = '&Walzenauswahl'
-        TabOrder = 5
-        object Label3: TLabel
-          Left = 8
-          Top = 24
-          Width = 39
-          Height = 13
-          Caption = 'Walze 1'
-        end
-        object Label4: TLabel
-          Left = 8
-          Top = 88
-          Width = 39
-          Height = 13
-          Caption = 'Walze 2'
-        end
-        object Label5: TLabel
-          Left = 8
-          Top = 152
-          Width = 39
-          Height = 13
-          Caption = 'Walze 3'
-        end
-        object Rotor1ComboBox: TComboBox
-          Left = 56
-          Top = 24
-          Width = 113
-          Height = 21
-          Style = csDropDownList
-          TabOrder = 0
-          Items.Strings = (
-            'I'
-            'II'
-            'III'
-            'IV'
-            'V'
-            'VI'
-            'VII'
-            'VIII')
-        end
-        object Rotor3ComboBox: TComboBox
-          Left = 56
-          Top = 144
-          Width = 113
-          Height = 21
-          Style = csDropDownList
-          TabOrder = 1
-          Items.Strings = (
-            'I'
-            'II'
-            'III'
-            'IV'
-            'V'
-            'VI'
-            'VII'
-            'VIII')
-        end
-        object Rotor2ComboBox: TComboBox
-          Left = 56
-          Top = 80
-          Width = 113
-          Height = 21
-          Style = csDropDownList
+        object GroupBox3: TGroupBox
+          Left = 12
+          Top = 177
+          Width = 292
+          Height = 113
+          Caption = '&Peg Board'
           TabOrder = 2
-          Items.Strings = (
-            'I'
-            'II'
-            'III'
-            'IV'
-            'V'
-            'VI'
-            'VII'
-            'VIII')
+          DesignSize = (
+            292
+            113)
+          object PlugBoardMemo: TMemo
+            Left = 9
+            Top = 16
+            Width = 272
+            Height = 87
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            Lines.Strings = (
+              'EN'
+              'IG'
+              'MA')
+            TabOrder = 0
+          end
+        end
+        object GroupBox4: TGroupBox
+          Left = 12
+          Top = 90
+          Width = 164
+          Height = 81
+          Caption = '&Greek Roller (for 4th Roller)'
+          TabOrder = 3
+          object BetaRadioButton: TRadioButton
+            Left = 16
+            Top = 24
+            Width = 65
+            Height = 17
+            Caption = '&Beta'
+            Checked = True
+            Enabled = False
+            TabOrder = 0
+            TabStop = True
+          end
+          object GammaRadioButton: TRadioButton
+            Left = 16
+            Top = 48
+            Width = 57
+            Height = 17
+            Caption = '&Gamma'
+            Enabled = False
+            TabOrder = 1
+          end
+        end
+        object GroupBox5: TGroupBox
+          Left = 182
+          Top = 8
+          Width = 122
+          Height = 163
+          Caption = '&Roll Selection'
+          TabOrder = 4
+          object Label3: TLabel
+            Left = 10
+            Top = 35
+            Width = 36
+            Height = 13
+            Caption = 'Roller 1'
+          end
+          object Label4: TLabel
+            Left = 10
+            Top = 71
+            Width = 36
+            Height = 13
+            Caption = 'Roller 2'
+          end
+          object Label5: TLabel
+            Left = 10
+            Top = 107
+            Width = 36
+            Height = 13
+            Caption = 'Roller 3'
+          end
+          object Rotor1ComboBox: TComboBox
+            Left = 52
+            Top = 32
+            Width = 57
+            Height = 21
+            Style = csDropDownList
+            TabOrder = 0
+            Items.Strings = (
+              'I'
+              'II'
+              'III'
+              'IV'
+              'V'
+              'VI'
+              'VII'
+              'VIII')
+          end
+          object Rotor3ComboBox: TComboBox
+            Left = 52
+            Top = 104
+            Width = 57
+            Height = 21
+            Style = csDropDownList
+            TabOrder = 1
+            Items.Strings = (
+              'I'
+              'II'
+              'III'
+              'IV'
+              'V'
+              'VI'
+              'VII'
+              'VIII')
+          end
+          object Rotor2ComboBox: TComboBox
+            Left = 52
+            Top = 68
+            Width = 57
+            Height = 21
+            Style = csDropDownList
+            TabOrder = 2
+            Items.Strings = (
+              'I'
+              'II'
+              'III'
+              'IV'
+              'V'
+              'VI'
+              'VII'
+              'VIII')
+          end
         end
       end
     end
     object TabSheet1: TTabSheet
       Caption = '&Debug'
       ImageIndex = 2
+      DesignSize = (
+        546
+        393)
       object DebugOutputRichEdit: TRichEdit
-        Left = 8
-        Top = 16
-        Width = 609
-        Height = 337
+        Left = 3
+        Top = 3
+        Width = 540
+        Height = 356
+        Anchors = [akLeft, akTop, akRight, akBottom]
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -3929,18 +3997,20 @@ object MainForm: TMainForm
         Zoom = 100
       end
       object Button2: TButton
-        Left = 8
-        Top = 360
+        Left = 3
+        Top = 365
         Width = 105
         Height = 25
-        Caption = '&Ausgabe l'#246'schen'
+        Anchors = [akLeft, akBottom]
+        Caption = 'Clear'
         TabOrder = 1
         OnClick = Button2Click
       end
     end
   end
   object MainMenu1: TMainMenu
-    Left = 316
+    Left = 20
+    Top = 24
     object Enigma1: TMenuItem
       Caption = '&Enigma'
       object EnigmaMaschine1: TMenuItem
@@ -3981,674 +4051,11 @@ object MainForm: TMainForm
       end
     end
   end
-  object ToolbarImages: TImageList
-    Height = 25
-    Width = 25
-    Left = 384
-    Top = 1
-    Bitmap = {
-      494C010106000900040019001900FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
-      000000000000360000002800000064000000320000000100200000000000204E
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF00808080000000
-      FF0080808000FFFFFF0000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000000000000000000000FF
-      FF00FFFFFF0000FFFF000000FF000000FF000000FF0000FFFF00FFFFFF0000FF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000C0C0C000C0C0C0008080800080808000808080000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000FFFF00FFFFFF0000FFFF00FFFFFF00808080000000
-      FF0080808000FFFFFF0000FFFF00FFFFFF0000FFFF0000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000C0C0C000C0C0C000808080000000
-      0000000000000000000080808000808080008080800000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000FFFF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF0000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000C0C0
-      C000C0C0C0000000000000000000000000000000000000000000000000000000
-      0000808080008080800000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF000000
-      FF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF00000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000C0C0C0000000000000000000000000000000
-      0000000000000000000000000000000000000000000080808000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000FFFF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF000000FF008080800000FFFF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF00000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000C0C0C0008080
-      8000000000000000000000000000000080000000800000008000000000000000
-      0000000000008080800080808000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF000000
-      FF000000FF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000C0C0C000000000000000000000000000000080000000
-      8000000080000000800000008000000000000000000000000000808080000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000FFFF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF0000FFFF000000FF000000FF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF00000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000FFFFFF000000
-      0000000000000000000000008000000080000000800000008000000080000000
-      0000000000000000000080808000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000FFFF00FFFFFF0000FFFF00FFFFFF00808080008080800000FFFF00FFFF
-      FF00808080000000FF000000FF00FFFFFF0000FFFF00FFFFFF0000FFFF000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000FFFFFF00000000000000000000000000C0C0C0000000
-      8000000080000000800000008000000000000000000000000000C0C0C0000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000FFFF00FFFFFF0000FF
-      FF000000FF000000FF00FFFFFF0000FFFF00808080000000FF000000FF0000FF
-      FF00FFFFFF0000FFFF00FFFFFF00000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000FFFFFF008080
-      8000000000000000000000000000C0C0C000C0C0C00000008000000000000000
-      00000000000080808000C0C0C000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF0000FFFF00FFFFFF000000FF000000FF0080808000FFFF
-      FF00808080000000FF000000FF00FFFFFF0000FFFF00FFFFFF00000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000C0C0C0000000000000000000000000000000
-      00000000000000000000000000000000000000000000C0C0C000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000FFFF00FFFFFF0000FF
-      FF00FFFFFF000000FF000000FF000000FF000000FF000000FF00FFFFFF0000FF
-      FF00FFFFFF0000FFFF0000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000FFFF
-      FF00C0C0C0000000000000000000000000000000000000000000000000000000
-      0000C0C0C000C0C0C00000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000FFFF00FFFFFF0000FFFF00FFFFFF000000FF000000
-      FF000000FF00FFFFFF0000FFFF00FFFFFF0000FFFF0000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF00C0C0C000808080000000
-      0000000000000000000080808000C0C0C000C0C0C00000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000000000000000000000FF
-      FF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000FFFFFF00FFFFFF00FFFFFF00C0C0C000C0C0C0000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF0000FFFF00FFFF
-      FF0000FFFF00FFFFFF0000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000406060004060600040606000406060004040
-      6000406060000000000000000000406060000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000004040
-      6000404060004040600040406000404060004040600040406000404060004040
-      4000406060004040600040606000404060004040600040406000404060004040
-      6000404060004060600040606000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000040808000000000008080A00080A0A0004080C0004080A0004080A0004080
-      A0004080A0004080A0004080A0004080A0004080A0004080A0004080A0004080
-      A0004080A0004080A0004080A0004080A0004080800040808000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000008080800040808000000000008080
-      800080A0A00080A0A0008080A0008080A0008080A00080808000808080008080
-      8000808080008080800080808000808080008080800080808000808080008080
-      8000808080004060600040404000406060004060600000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000808080008080800040606000402020004020200040202000402020004020
-      2000402020004020200040202000402020004020200040202000402020004020
-      2000402020004020200040202000402020004020200040606000404040004040
-      4000406060000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000C0A08000A4A0A000406060004020
-      2000402020004020200040202000402020004020200040202000402020004040
-      2000404020004040200040202000402020004020200040202000402020004020
-      2000402020004060600040606000404040004060600000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000FFFFFF00FFFFFF000000000000000000000000000000FF00000080000000
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000FF000000FF000000FF000000FF000000FF00000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000C0C0A000C0A080008080A000404020004040200040402000404020004040
-      2000404020004040200040402000404020004040400040402000404020004040
-      2000404020004040200040402000404020004040200080A0A000406040004060
-      600040606000000000000000000000000000000000000000000000000000FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF0000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000008080
-      8000000000000000000000000000FFFFFF00FFFFFF0000000000000000000000
-      0000000000000000FF00000080000000FF000000000000808000000000000000
-      000000000000000000000000000000000000000000000000000000000000FF00
-      0000FF000000FF000000FF000000FF000000FF000000C0C0C00000000000C0C0
-      C000FF000000FF000000FF000000FF000000FF000000FF000000000000000000
-      000000000000000000000000000000000000C0C0A000C0A0800080A0C0004060
-      4000406040004040400040604000404040004040400040604000404040004060
-      4000404040004060400040604000406040004060400040604000406040008060
-      40008060400080A0A00040604000406060004060600000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000000000FFFFFF000000
-      0000FFFFFF0000000000FFFFFF0000000000FFFFFF0000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000008080800000000000FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF0000000000000000000000000000000000000000000000FF00000080000000
-      FF00008080000080800000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000C0C0C000C0C0C000C0C0
-      C000C0C0C000000000008080800000000000C0C0C000C0C0C000C0C0C000C0C0
-      C000000000000000000000000000000000000000000000000000000000000000
-      000080A080008080800080808000808080008060600080606000406060004060
-      6000406060004060600040604000406060004060600040604000406040004060
-      4000406040004060400040604000806040008060400040806000406040004060
-      6000406060000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000FFFF
-      FF000000000000000000FFFFFF00FFFFFF000000000000000000000000000000
-      0000000000000000FF00000080000000FF000080800000808000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000FFFFFF0000000000808080008080800000000000FFFFFF0080808000FFFF
-      FF0000000000808080008080800000000000FFFFFF0000000000000000000000
-      0000000000000000000000000000000000008080800080808000808080004080
-      8000806040008060600040604000806060004060400080604000806060004060
-      4000806060008060400080604000806060008060400080806000806040008060
-      6000806060004060600040606000406060004060600000000000000000000000
-      00000000000000000000FFFFFF00FFFFFF00C0C0C00000000000000000000000
-      000000000000000000000000000000000000C0C0C000FFFFFF00FFFFFF000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000FFFF
-      FF0000000000000000000000000000000000000000000000FF00000080000000
-      FF00008080000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000008080800000000000FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF0080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00000000008080800000000000000000000000000000000000000000000000
-      0000808080004080800040606000408080008080800080604000806040008060
-      4000806060008060400080606000806040008060400080604000806060008060
-      4000806040008060400080604000808060008080800040606000406040004060
-      6000406060000000000000000000000000000000000000000000FFFFFF000000
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000008080
-      8000000000000000000000000000FFFFFF000000000000000000000000000000
-      00000000FF000000FF000000FF000000FF000000FF0000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000008080
-      800000000000FFFFFF00FFFFFF00FFFFFF0000FFFF000000FF000000FF00FFFF
-      FF0000FFFF00FFFFFF00FFFFFF00FFFFFF000000000080808000000000000000
-      0000000000000000000000000000000000004080800040808000000000000000
-      0000806060008060400080604000806040008060400080604000806040008080
-      6000806060008080600080808000808060008080600080A08000808080008080
-      6000808060004060400040606000406060004060600000000000000000000000
-      00000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000008080800000000000FFFFFF000000
-      0000808080000000000000000000000000000000800000008000000080000000
-      8000000080000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF00FFFFFF0000FF
-      FF00FFFFFF000000FF000000FF0000FFFF00FFFFFF0000FFFF00FFFFFF00FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000408080000000000000000000406060008080800080604000806040008060
-      4000806040008060400080604000808060008060600080806000806040008060
-      4000806040008060400080604000806040004060600040604000406060004060
-      6000406060000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000808080000000000000000000000000000080
-      8000008080000080800000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000808080000000000000FFFF00FFFFFF0000FFFF00FFFFFF0080808000FFFF
-      FF0000FFFF00FFFFFF0000FFFF00000000008080800000000000000000000000
-      0000000000000000000000000000000000004060600040606000000000004060
-      6000408080004060400040404000406060004060600040606000406060004060
-      6000406060004060600040606000406060004060600040606000406060004060
-      6000406060004060600040606000406060004060600000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000808000008080000080800000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000008080800000000000FFFFFF0000FF
-      FF00FFFFFF000000FF00C0C0C00000FFFF00FFFFFF0000FFFF00FFFFFF000000
-      0000808080000000000000000000000000000000000000000000000000000000
-      0000406060004060600040606000406060008080800040404000404040004020
-      2000404060004040600040406000404060004040600040406000404060004040
-      6000404060004040400040404000806060000000000040606000406060004060
-      6000406060000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000808000008080000080
-      8000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000FFFF000000000000FFFF00FFFFFF0000FFFF000000FF000000FF000000
-      000000FFFF00FFFFFF0000FFFF00000000000000000000000000000000000000
-      0000000000000000000000000000000000004060600040606000406060004060
-      6000000000004060600040404000404040004060600040406000404060004040
-      6000404060004040600040404000404060004060600040404000404040008080
-      8000408080004060600040606000406060004060600000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF00000000000000
-      0000000000000000000000000000FFFFFF000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000008080000080800000808000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000FFFF00000000000000
-      00000000000000FFFF000000FF000000FF0000000000000000000000000000FF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      000040606000406060004060600040606000000000004020400040406000A4A0
-      A000C0C0C000A4A0A000A4A0A000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
-      C000C0C0C000C0C0C00000000000404060000000000040606000406060004060
-      6000406060000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF000000000000FF000000FF0000FFFF000000000000FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000008080000080800000808000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF00FFFFFF0000FFFF000000
-      FF000000FF00FFFFFF0000FFFF00FFFFFF000000000000000000000000000000
-      0000000000000000000000000000000000004060600040606000406060004060
-      6000000000004020400040406000F0FBFF00C0DCC000F0FBFF00C0DCC000F0FB
-      FF00F0FBFF00F0FBFF00F0FBFF00F0FBFF00F0FBFF00F0FBFF008080A0004040
-      6000000000004060400040606000406060004060400000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF0000000000FF00
-      FF0000FF0000FF00FF0000000000FFFFFF000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000008080000000000000000000000000000000000080808000000000008080
-      8000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFFF0000FFFF00FFFFFF000000
-      FF000000FF0000FFFF00FFFFFF000000FF000000FF0000FFFF00FFFFFF0000FF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      000080606000406060004060600040606000000000004020400040606000F0FB
-      FF00C0DCC000C0DCC000C0DCC000C0DCC000F0FBFF00F0FBFF00F0FBFF00C0DC
-      C000C0DCC000F0FBFF0080A0A000404060000000000040604000406040004060
-      4000404040000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF000000000000000000000000000000000000000000FFFF
-      FF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000008080800000000000808080000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000FFFFFF0000FFFF000000FF000000FF00FFFFFF0000FFFF000000
-      FF000000FF00FFFFFF0000FFFF00000000000000000000000000000000000000
-      0000000000000000000000000000000000008080600040606000808060004060
-      6000000000004020400040606000F0FBFF00F0FBFF00F0FBFF00F0FBFF00C0DC
-      C000C0DCC000C0DCC000F0FBFF00F0FBFF00F0FBFF00F0FBFF0080A0C0004040
-      6000000000004060400040404000404040004040400000000000000000000000
-      00000000000000000000000000000000000000000000FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000080800000000000000000000000
-      0000000000008080800000000000000000000000000080808000000000008080
-      8000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000FFFFFF0000FF
-      FF000000FF000000FF000000FF000000FF00FFFFFF0000FFFF00000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000808060008060400040604000404040000000000040204000404040008080
-      80008080800080808000808080008080800080808000808080008080800080A0
-      8000808080008080800080806000404060000000000040404000402020004020
-      2000402020000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000008080000080800000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000FFFFFF0000FFFF00FFFFFF0000FFFF00FFFF
-      FF0000FFFF000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000008080600080804000806040004040
-      4000000000004040400040604000406040004040400040402000404040004040
-      2000406040004060400040604000406040004060400040604000406040004060
-      6000000000004040400040202000402020004020200000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000808060008080400080806000406040004060600040402000404040004040
-      4000404040004040400040404000404040004040400040604000406040004040
-      4000404040004040400040404000404040004040600040404000402020004020
-      2000402020000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000008080600080806000808060008060
-      4000000000004060600000000000000000000000000000000000406060004060
-      6000408060008080600080806000808060004060600040606000000000004060
-      6000406060004040400040402000402020004020200000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000808060008080600080806000808040008080600080604000808060008060
-      40008080600080604000808040004060400080804000C0A04000C0A0400080A0
-      600080A080008080600040806000406060004060400040402000406040004060
-      4000406040000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000424D3E000000000000003E000000
-      2800000064000000320000000100010000000000200300000000000000000000
-      000000000000000000000000FFFFFF00FFFFFFFFFFFFC0000000000000000000
-      FFFFFFFFFFFFC0000000000000000000FFFFFFFFFFFFC0000000000000000000
-      FFFFFFFFFFFFC0000000000000000000FFFFFFFFFFFFC0000000000000000000
-      FFFFFFFFFFFFC0000000000000000000FF83FFFFC1FFC0000000000000000000
-      FE00FFFF007FC0000000000000000000FC007FFE003FC0000000000000000000
-      F8003FFC001FC0000000000000000000F8003FFC001FC0000000000000000000
-      F0001FF8000FC0000000000000000000F0001FF8000FC0000000000000000000
-      F0001FF8000FC0000000000000000000F0001FF8000FC0000000000000000000
-      F0001FF8000FC0000000000000000000F8003FFC001FC0000000000000000000
-      F8003FFC001FC0000000000000000000FC007FFE003FC0000000000000000000
-      FE00FFFF007FC0000000000000000000FF83FFFFC1FFC0000000000000000000
-      FFFFFFFFFFFFC0000000000000000000FFFFFFFFFFFFC0000000000000000000
-      FFFFFFFFFFFFC0000000000000000000FFFFFFFFFFFFC0000000000000000000
-      FFE06FFFFFFFFFFFFFFFFFFFF0000000E00001FFFFFFFFFFFFFFFFFFF0000000
-      400003FFFFFFFFFFFFFFFFFFF00000002000007FFFFFFFFFFFFFFFFFF0000000
-      0000007FFFFFFFFFFFFFFFFFF00000000000007C001FFFE18BFFF07FF0000000
-      0000007C001FFE0383FE0003F00000000000007E003FFC0783FE0003F0000000
-      00000078000FFC0783FE0003F000000000000078000FFCC787FE0003F0000000
-      00000078000FFCC707FE0003F000000030000078000FFF0607FF0007F0000000
-      6000007C001FFF0C1FFF0007F00000002000007F007FFFF85FFF0007F0000000
-      0000087F007FFF30DFFF000FF00000000800007F007FFEA1DFFF000FF0000000
-      0800287F007FFD03DFFF000FF00000000800087F007FFC078FFF000FF0000000
-      0800087F007FFF078FFF801FF00000000800087F007FFF038FFFC03FF0000000
-      0800087F007FFF20FFFFE07FF00000000800087FFFFFFFFFFFFFFFFFF0000000
-      0000007FFFFFFFFFFFFFFFFFF00000000BC0207FFFFFFFFFFFFFFFFFF0000000
-      0000007FFFFFFFFFFFFFFFFFF000000000000000000000000000000000000000
-      000000000000}
-  end
   object LightImages: TImageList
     Height = 30
     Width = 30
-    Left = 304
-    Top = 64
+    Left = 96
+    Top = 24
     Bitmap = {
       494C01011A001D0004001E001E00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000078000000D20000000100200000000000C089
@@ -7915,8 +7322,8 @@ object MainForm: TMainForm
   object DarkImages: TImageList
     Height = 30
     Width = 30
-    Left = 448
-    Top = 64
+    Left = 168
+    Top = 24
     Bitmap = {
       494C01011A001D0004001E001E00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000078000000D20000000100200000000000C089
