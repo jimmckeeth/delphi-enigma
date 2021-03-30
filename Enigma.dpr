@@ -12,7 +12,6 @@ uses
 
 begin
   Application.Initialize;
-  TStyleManager.TrySetStyle('Carbon');
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TAboutForm, AboutForm);
   Application.Run;
