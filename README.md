@@ -1,11 +1,11 @@
 Delphi Enigma
 =============
 
-A Delphi/ Object Pascal implementation of the World War II Enigma Encryption/Decryption Device.
+A Delphi/Object Pascal implementation of the World War II era [Enigma](https://en.wikipedia.org/wiki/Enigma_machine) Encryption/Decryption Device.
 
 Originally written by [Jorn Franke](https://github.com/jornfranke/enigmadelphi)
 
-Updated for Delphi 10.4 Sydney by Jim McKeeth
+Updated for Delphi 10.4 Sydney by Jim McKeeth and Glenn Dufke
 
 VCL for Win32 and Win64
 
