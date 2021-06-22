@@ -1,7 +1,7 @@
 Delphi Enigma
 =============
 
-A Delphi/Object Pascal implementation of the World War II era [Enigma](https://en.wikipedia.org/wiki/Enigma_machine) Encryption/Decryption Device.
+A implementation in Delphi's Object Pascal of the World War II era [Enigma](https://en.wikipedia.org/wiki/Enigma_machine) Encryption/Decryption Device.
 
 Originally written by [Jorn Franke](https://github.com/jornfranke/enigmadelphi)
 
